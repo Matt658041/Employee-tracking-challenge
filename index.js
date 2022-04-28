@@ -1,4 +1,20 @@
+const mysql = require('mysql2');
+const inquirer = require('inquirer');
 
+
+//connect to mysql database
+const db = mysql.createConnection(
+    {
+        host: 'localhost',
+        //your mysql username,
+        user: 'root',
+        //mysql password
+        password:'Gateway3!',
+        database: 'election'
+
+    },
+    console.log('Connected to the election database.')
+);
 
 
 
@@ -109,3 +125,4 @@ function init() {
 }
 
 init()
+module.exports = db;
