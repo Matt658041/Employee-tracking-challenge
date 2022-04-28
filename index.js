@@ -15,9 +15,17 @@ const db = mysql.createConnection(
     },
     console.log('Connected to the election database.')
 );
+// will need to create a connect function
+db.connect(function() {
+
+});
 
 
 
+//will need to create a querty function
+function querying() {
+    db.query("SELECT * FROM ")
+}
 
 //These questions are used to populate the employee tracker database with an array of questions that I re-used from the read-me homework assignment.
 function promptUser(){
@@ -106,23 +114,14 @@ function promptUser(){
             ]
         },
 
-    ]);
-}  
-/// This is where you will it will write to the file and prompt the questions
-function writeToFile(fileName, data) {
-    console.log(data)
-     fs.writeFileSync(path.join(process.cwd(), fileName), data,(err) => {
-         if (err) throw err;
+    ]).then(function(answers) {
+        console.log(answers);
+        db.query("INSERT INTO   ", {
+            //need employee names etc.
 
-     });
-}
-//prompting the questions
-function init() {
-    promptUser().then(inquirerResponses =>{
-        console.log('Generating README...');
-        writeToFile('README.md', generateMarkdown({ ...inquirerResponses }));
+            querying()
+        })
     })
-}
+}  
 
-init()
 module.exports = db;
