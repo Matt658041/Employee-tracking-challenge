@@ -11,10 +11,10 @@ const db = mysql.createConnection(
         user: 'root',
         //mysql password
         password:'Gateway3!',
-        database: 'election'
+        database: 'tracker'
 
     },
-    console.log('Connected to the election database.')
+    console.log('Connected to the employee tracking database.')
 );
 // will need to create a connect function
 db.connect(function() {
@@ -132,17 +132,9 @@ function promptUser(){
             choices: [
                 " "
             ]
-        },
+        }
 
-    ]).then(function(answers) {
-        
-      });
-    });
-  });
-
-            
-        })
-    })
-}  
+    ]);
+}
 
 module.exports = db;
