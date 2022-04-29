@@ -1,5 +1,6 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
+const cTable = require('console.table');
 
 
 //connect to mysql database
@@ -19,13 +20,32 @@ const db = mysql.createConnection(
 db.connect(function() {
 
 });
+//will need to create a query function
+const sql = `INSERT INTO department(roles_id, employee_id) VALUES (?,?)`;
+    const params = [body.roles_id, body.employee_id];
+  
+    db.query(sql, params, (err, result) => {
+      if (err) {
+        res.status(400).json({ error: err.message });
+        return;
+      }
+      res.json({
+        message: 'success',
+        data: body,
+        changes: result.affectedRows
+
+//will need to use console table to print the created table
+console.table([
+    {
+        name: 'employee',
+        id: 10
+    }, {
+        name:'role',
+        id: 20
+    }
+]);
 
 
-
-//will need to create a querty function
-function querying() {
-    db.query("SELECT * FROM ")
-}
 
 //These questions are used to populate the employee tracker database with an array of questions that I re-used from the read-me homework assignment.
 function promptUser(){
@@ -115,18 +135,7 @@ function promptUser(){
         },
 
     ]).then(function(answers) {
-        const sql = `INSERT INTO department(roles_id, employee_id) VALUES (?,?)`;
-    const params = [body.roles_id, body.employee_id];
-  
-    db.query(sql, params, (err, result) => {
-      if (err) {
-        res.status(400).json({ error: err.message });
-        return;
-      }
-      res.json({
-        message: 'success',
-        data: body,
-        changes: result.affectedRows
+        
       });
     });
   });
