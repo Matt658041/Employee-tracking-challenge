@@ -2,6 +2,7 @@ const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
 
+
 // this will connect to mysql database not sure how to hide password 
 const connection = mysql.createConnection(
     {
@@ -12,26 +13,31 @@ const connection = mysql.createConnection(
         password:'Gateway3!',
         database: 'tracker'
 
-    });
+    },
+    console.log("Connected ")
+    
+  );
    
 // will need to create a connection function and initialize it
-db.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected ");
-    init();
+// db.connect(function(err) {
+//     if (err) throw err;
+    
+//     init();
 
-});
+// });
 //These questions are used to populate the employee tracker database with an array of questions that are similiar to the module 9 homework assignment we did but with the exceptions of the switch, case, break statements that either match the expression to be used or break out of it. 
-function init() {
+const cmdPrompt = () => {
     inquirer
-    .prompt ({
-        name: "menu",
+    .prompt ([
+      {
         type: "list",
+        name: "cmd",
         message:"Thank you for using the Employee Tracking Database. What would you like to do?",
         choices:["[VIEW] data", "[ADD] data","[UPDATE] data", "EXIT"],
-    })
+    }
+  ])
     //will then need a .then function with a switch case expression to compare, match and execute the code.
-    .then(function (answer) {
+    .then(answer) => {
         switch (answer.menu) {
           case "[VIEW] data":
             viewData();

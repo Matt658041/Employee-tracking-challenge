@@ -1,22 +1,23 @@
+DROP DATABASE IF EXISTS tracker;
+CREATE DATABASE tracker;
+-- DROP TABLE IF EXISTS department;
+-- DROP TABLE IF EXISTS roles;
+-- DROP TABLE IF EXISTS employee;
 
-DROP TABLE IF EXISTS department;
-DROP TABLE IF EXISTS roles;
-DROP TABLE IF EXISTS employee;
-
-
+USE tracker;
 
 CREATE TABLE department (
-   dept_id INTEGER AUTO_INCREMENT,
+   dept_id INTEGER AUTO_INCREMENT PRIMARY KEY,
    dept_name VARCHAR(50) NOT NULL,
-PRIMARY KEY (dept_id) 
+-- PRIMARY KEY (dept_id) 
 );
 
 CREATE TABLE roles (
     roles_id INTEGER AUTO_INCREMENT,
-    title VARCHAR(30) NOT NULL,
-    salary DECIMAL(11,3) NOT NULL,
+    title VARCHAR(30) UNIQUE NOT NULL,
+    salary DECIMAL UNSIGNED NOT NULL,
     dept_id INTEGER NOT NULL, 
-    PRIMARY KEY (roles_id),
+    -- PRIMARY KEY (roles_id),
     FOREIGN KEY (dept_id) REFERENCES department(dept_id)   
 );
 
