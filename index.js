@@ -15,9 +15,9 @@ const connection = mysql.createConnection(
     });
    
 // will need to create a connection function and initialize it
-connection.connect(function(err) {
+db.connect(function(err) {
     if (err) throw err;
-    console.log("Connected " + id.threadId);
+    console.log("Connected ");
     init();
 
 });
