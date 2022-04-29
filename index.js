@@ -115,11 +115,23 @@ function promptUser(){
         },
 
     ]).then(function(answers) {
-        console.log(answers);
-        db.query("INSERT INTO   ", {
-            //need employee names etc.
+        const sql = `INSERT INTO department(roles_id, employee_id) VALUES (?,?)`;
+    const params = [body.roles_id, body.employee_id];
+  
+    db.query(sql, params, (err, result) => {
+      if (err) {
+        res.status(400).json({ error: err.message });
+        return;
+      }
+      res.json({
+        message: 'success',
+        data: body,
+        changes: result.affectedRows
+      });
+    });
+  });
 
-            querying()
+            
         })
     })
 }  
