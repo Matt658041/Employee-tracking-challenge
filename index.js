@@ -1,7 +1,7 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
-const db = require('./');
+
 // this will connect to mysql database not sure how to hide password 
 const connection = mysql.createConnection(
     {
