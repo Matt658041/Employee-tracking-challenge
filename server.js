@@ -38,7 +38,8 @@ const cmdPrompt = () => {
   ])
     //will then need a .then function with a switch case expression to compare, match and execute the code.
     .then(function (answer) {
-        switch (answer.menu) {
+      console.log(answer.cmd);
+        switch (answer.cmd) {
           case "[VIEW] data":
             viewData();
             break;
@@ -54,9 +55,9 @@ const cmdPrompt = () => {
             break;
         }
       });
-    }
+    
 //will have to create a function for be able to view the data menu
-const viewData = () => {
+function viewData  ()  {
    
     return inquirer.prompt({
         name: "viewMenu",
@@ -107,14 +108,14 @@ const viewData = () => {
 
 
   //This is where you will have to use inquirer again to prompt the add menu section AND ADD EMPLOYEE ROLES AND DEPARTMENT
-  const addData = () => {
+  function addData  ()  {
     
-    return inquirer.prompt({
+     inquirer.prompt({
         name: "addMenu",
         type: "list",
         message: "What would you like to ADD?",
         choices: ["Add Employee", "Add Roles", "Add Department"],
-      })
+      }) 
       .then(function (answer) {
         switch (answer.addMenu) {
           case "Add Employee":
@@ -207,8 +208,8 @@ const viewData = () => {
               });
             break;
         }
-      });
-  }
+      }); 
+  } 
   ///this is where you will create a query function for the updated data
   function updateData() {
     connection.query("Select * FROM employee;", function (err, results) {
@@ -265,5 +266,5 @@ const viewData = () => {
         });
     });
   }
-
+}
 cmdPrompt ()
