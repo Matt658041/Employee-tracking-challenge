@@ -54,7 +54,7 @@ const cmdPrompt = () => {
             break;
         }
       });
-}
+    }
 //will have to create a function for be able to view the data menu
 const viewData = () => {
    
@@ -265,6 +265,5 @@ const viewData = () => {
         });
     });
   }
+
 cmdPrompt ()
-addData()
-updateData()
