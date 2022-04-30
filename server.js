@@ -51,6 +51,7 @@ const cmdPrompt = () => {
             break;
           case "EXIT":
             console.log("You have exited the appilcation!");
+            //the connection end should exit
             connection.end();
             break;
         }
@@ -59,7 +60,7 @@ const cmdPrompt = () => {
 //will have to create a function for be able to view the data menu
 function viewData  ()  {
    
-    return inquirer.prompt({
+     inquirer.prompt({
         name: "viewMenu",
         type: "list",
         message: "Please select the items you would like to VIEW?",
@@ -82,29 +83,29 @@ function viewData  ()  {
 
   /// This will be where you have to create a set of query functions and use the console table app that was installed per the homework request. And make sure to use LEFT JOIN TO CONNECT THE TABLES!!!
 
-  function seeEmployees() {
+   function seeEmployees() {
     connection.query(
       "SELECT employee.first_name, employee.last_name, roles.title, roles.salary from employee LEFT JOIN roles on employee.roles_id = roles.id;",
       function (err, res) {
         console.table(res);
-        init();
+        
       }
     );
-  }
+  } 
   
   function seeRoles() {
     connection.query("SELECT * FROM roles;", function (err, res) {
       console.table(res);
-      init();
+      
     });
   }
-  
+   
   function seeDepartments() {
     connection.query("SELECT * FROM department;", function (err, res) {
       console.table(res);
-      init();
+      
     });
-  }
+  } 
 
 
   //This is where you will have to use inquirer again to prompt the add menu section AND ADD EMPLOYEE ROLES AND DEPARTMENT
