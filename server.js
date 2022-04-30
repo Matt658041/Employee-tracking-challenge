@@ -22,22 +22,22 @@ const connection = mysql.createConnection(
 // db.connect(function(err) {
 //     if (err) throw err;
     
-//     init();
+
 
 // });
 //These questions are used to populate the employee tracker database with an array of questions that are similiar to the module 9 homework assignment we did but with the exceptions of the switch, case, break statements that either match the expression to be used or break out of it. 
 const cmdPrompt = () => {
-    inquirer
-    .prompt ([
+      
+   return inquirer.prompt ([
       {
         type: "list",
         name: "cmd",
         message:"Thank you for using the Employee Tracking Database. What would you like to do?",
         choices:["[VIEW] data", "[ADD] data","[UPDATE] data", "EXIT"],
-    }
+    },
   ])
     //will then need a .then function with a switch case expression to compare, match and execute the code.
-    .then(answer) => {
+    .then(function (answer) {
         switch (answer.menu) {
           case "[VIEW] data":
             viewData();
@@ -56,9 +56,9 @@ const cmdPrompt = () => {
       });
 }
 //will have to create a function for be able to view the data menu
-function viewData() {
-    inquirer
-      .prompt({
+const viewData = () => {
+   
+    return inquirer.prompt({
         name: "viewMenu",
         type: "list",
         message: "Please select the items you would like to VIEW?",
@@ -107,9 +107,9 @@ function viewData() {
 
 
   //This is where you will have to use inquirer again to prompt the add menu section AND ADD EMPLOYEE ROLES AND DEPARTMENT
-  function addData() {
-    inquirer
-      .prompt({
+  const addData = () => {
+    
+    return inquirer.prompt({
         name: "addMenu",
         type: "list",
         message: "What would you like to ADD?",
@@ -265,3 +265,6 @@ function viewData() {
         });
     });
   }
+cmdPrompt ()
+addData()
+updateData()
