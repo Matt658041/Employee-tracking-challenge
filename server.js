@@ -88,7 +88,7 @@ function viewData  ()  {
       "SELECT employee.first_name, employee.last_name, roles.title, roles.salary from employee LEFT JOIN roles on employee.roles_id = roles.id;",
       function (err, res) {
         console.table(res);
-        
+        (cTable);
       }
     );
   } 
@@ -96,6 +96,7 @@ function viewData  ()  {
   function seeRoles() {
     connection.query("SELECT * FROM roles;", function (err, res) {
       console.table(res);
+      (cTable);
       
     });
   }
@@ -103,6 +104,7 @@ function viewData  ()  {
   function seeDepartments() {
     connection.query("SELECT * FROM department;", function (err, res) {
       console.table(res);
+      (cTable);
       
     });
   } 
