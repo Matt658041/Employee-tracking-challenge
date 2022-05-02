@@ -10,7 +10,7 @@ const connection = mysql.createConnection(
         //your mysql username,
         user: 'root',
         //mysql password
-        password:'Gateway3!',
+        password:'root',
         database: 'tracker'
 
     },
